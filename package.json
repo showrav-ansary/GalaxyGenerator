@@ -1,0 +1,21 @@
+{
+  "name": "galaxygenerator",
+  "version": "0.0.0",
+  "description": "A random threejs project inspired by Bruno Simons.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "vite": "^4.0.4"
+  },
+  "dependencies": {
+    "lil-gui": "^0.17.0",
+    "three": "^0.148.0",
+    "vercel": "^28.18.3"
+  },
+  "author": "A. A. Noman Ansary",
+  "license": "CC0-1.0"
+}
