@@ -25,7 +25,7 @@ const scene = new THREE.Scene();
 
 // Main camera
 const camera = new THREE.PerspectiveCamera(75, size.width / size.height, 0.1, 15);
-camera.position.set(2, 2, 5);
+camera.position.set(2, 3, 6);
 scene.add(camera);
 
 
@@ -69,6 +69,7 @@ window.addEventListener('resize', () => {
 
     // Update the pixel ratio
     updateRenderer();
+    animatingFunction()
 });
 
 
@@ -82,11 +83,11 @@ const parametersGalaxy = {
     count: 100000,
     size: 0.01,
     radius: 5,
-    branch: 3,
+    branch: 4,
     spin:1,
     randomness: 0.2,
     randomnessPower: 3,
-    inwardColor: 0xe55e15,
+    inwardColor: 0xff5900,
     outwardColor:0x4848db
 }
 
@@ -198,5 +199,6 @@ debugUI.add(parametersGalaxy, 'radius').min(0.01).max(20).step(0.01).name('Galax
 debugUI.add(parametersGalaxy, 'branch').min(2).max(20).step(1).name('Galaxy Branch').onFinishChange(GenerateGalaxy);
 debugUI.add(parametersGalaxy, 'spin').min(-2).max(2).step(0.1).name('Galaxy Spin').onFinishChange(GenerateGalaxy);
 debugUI.add(parametersGalaxy, 'randomness').min(0).max(1).step(0.1).name('Particle Randomness').onFinishChange(GenerateGalaxy);
+debugUI.add(parametersGalaxy, 'randomnessPower').min(2).max(3).step(0.1).name('Particle Randomness Power').onFinishChange(GenerateGalaxy);
 debugUI.addColor(parametersGalaxy, 'inwardColor').min(0).max(10).step(0.1).name('Galaxy Inward').onFinishChange(GenerateGalaxy);
 debugUI.addColor(parametersGalaxy, 'outwardColor').min(0).max(10).step(0.1).name('Galaxy Outward').onFinishChange(GenerateGalaxy);
