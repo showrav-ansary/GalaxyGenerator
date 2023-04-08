@@ -59,7 +59,7 @@ controls.enableDamping = true;
  * Window Resize
  */
 window.addEventListener('resize', () => {
-    // Take update the dimensions
+    // Take the updated dimensions
     size.width = window.innerWidth;
     size.height = window.innerHeight;
 
@@ -69,7 +69,6 @@ window.addEventListener('resize', () => {
 
     // Update the pixel ratio
     updateRenderer();
-    animatingFunction()
 });
 
 
@@ -129,7 +128,7 @@ const GenerateGalaxy = () => {
         const randomZShift =  Math.pow(Math.random(), parametersGalaxy.randomnessPower) * (Math.random() < 0.5 ? 1:-1);
        
         pointsPosition[pointStartIndex] = Math.cos(branchAngle + spinAngle) * radius + randomXShift;
-        pointsPosition[pointStartIndex + 1] = randomYShift
+        pointsPosition[pointStartIndex + 1] = randomYShift;
         pointsPosition[pointStartIndex + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZShift;
         
 
