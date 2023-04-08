@@ -65,7 +65,7 @@ window.addEventListener('resize', () => {
 
     // Update the perspective camera aspect
     camera.aspect = size.innerWidth / size.innerHeight;
-    camera.updateProjectMatrix();
+    camera.updateProjectionMatrix();
 
     // Update the pixel ratio
     updateRenderer();
