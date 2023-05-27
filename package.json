@@ -14,8 +14,7 @@
   "dependencies": {
     "lil-gui": "^0.17.0",
     "three": "^0.148.0",
-    "vercel": "^28.18.4",
-    "vite-plugin-glsl": "^1.1.2"
+    "vercel": "^28.18.4"
   },
   "author": "A. A. Noman Ansary",
   "license": "CC0-1.0"

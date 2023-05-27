@@ -6,10 +6,6 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import * as lil from 'lil-gui';
 
-import galaxyVertexShader from './shaders/galaxy/vertex.glsl';
-import galaxyFragmentShader from './shaders/galaxy/fragment.glsl';
-
-
 /**
  * Base
  */
@@ -110,9 +106,8 @@ const GenerateGalaxy = () => {
     galaxyGeometry = new THREE.BufferGeometry();
     
     const pointsPosition= new Float32Array(parametersGalaxy.count * 3);
+    
     const pointsColor = new Float32Array(parametersGalaxy.count * 3);
-    const scales = new Float32Array(parametersGalaxy.count * 3);
-
 
     const colorInwards = new THREE.Color(parametersGalaxy.inwardColor);
     const colorOutwards = new THREE.Color(parametersGalaxy.outwardColor);
@@ -144,9 +139,6 @@ const GenerateGalaxy = () => {
         pointsColor[pointStartIndex] = mixedColor.r;
         pointsColor[pointStartIndex+1] = mixedColor.g;
         pointsColor[pointStartIndex+2] = mixedColor.b; 
-
-        // Scale
-        scales[i] = Math.random();
     }
     galaxyGeometry.setAttribute(
         'position',
@@ -156,23 +148,14 @@ const GenerateGalaxy = () => {
         'color',
         new THREE.BufferAttribute(pointsColor,3)
     );
-    galaxyGeometry.setAttribute(
-        'aScale',
-        new THREE.BufferAttribute(scales,1)
-    )
-
-
+    
     // Material
-    galaxyMaterial = new THREE.ShaderMaterial({
+    galaxyMaterial = new THREE.PointsMaterial({
+        size: parametersGalaxy.size,
+        sizeAttenuation: true,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
-        vertexColors: true,
-        vertexShader: galaxyVertexShader,
-        fragmentShader: galaxyFragmentShader,
-        uniforms:{
-            uSize: {value: 8.0 * webGLRenderer.getPixelRatio()},
-
-        }
+        vertexColors: true
     });
 
     // Points
@@ -181,7 +164,6 @@ const GenerateGalaxy = () => {
 
 
 }
-
 GenerateGalaxy();
 
 /**
